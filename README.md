@@ -8,6 +8,7 @@
 * For non-Node participants, you can join  pilot program [here](https://points.absinthe.network/hemi/) : Use my code to Enter: `a8389da2`
 * You can run miner using web browser on windows here: https://pop-miner.hemi.xyz/
 * Chekc point: https://testnet.popstats.hemi.network/
+* https://hemistatus.com/
 
 ## Install Miner on Linux
 **1. Download Binaries**
@@ -17,7 +18,7 @@ wget https://github.com/hemilabs/heminetwork/releases/download/v0.4.5/heminetwor
 
 **2. Extract Binaries**
 ```bash
-tar -xvf heminetwork_v0.4.5_linux_amd64.tar.gz && rm heminetwork_v0.4.5_linux_amd64.tar.gz && cd heminetwork_v0.4.5_linux_amd64
+mkdir heminetwork && tar -xvf heminetwork_v0.4.5_linux_amd64.tar.gz -C heminetwork && rm heminetwork_v0.4.5_linux_amd64.tar.gz && cd heminetwork
 ```
 
 ## Wallet
@@ -38,28 +39,45 @@ cat $HOME/popm-address.json
 * Check your txhash in explorer until it get CONFIRMED
 
 ## Start Miner
-**1. Create screen**
-```bash
-screen -S hemi
+# Replace your private key with `PRIVATE_KEY`**
+# create service
+```
+sudo tee /etc/systemd/system/hemid.service > /dev/null <<EOF
+[Unit]
+Description=Hemi network
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=$HOME/heminetwork
+ExecStart=$HOME/heminetwork/popmd
+Environment="POPM_BTC_PRIVKEY=PRIVATE_KEY"
+Environment="POPM_STATIC_FEE=50"
+Environment="POPM_BFG_URL=wss://testnet.rpc.hemi.network/v1/ws/public"
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
 ```
 
-**2. Replace your private key with `PRIVATE_KEY`**
-```bash
-echo 'export POPM_BTC_PRIVKEY=PRIVATE_KEY' >> ~/.bashrc
-echo 'export POPM_STATIC_FEE=50' >> ~/.bashrc
-echo 'export POPM_BFG_URL=wss://testnet.rpc.hemi.network/v1/ws/public' >> ~/.bashrc
-source ~/.bashrc
+# run
 ```
-
-**3. Start your node**
-```bash
-./popmd
+sudo systemctl daemon-reload && \
+sudo systemctl enable hemid && \
+sudo systemctl start hemid && \
+sudo journalctl -u hemid -f -o cat
 ```
-
-![image](https://github.com/user-attachments/assets/76dc9867-a0b3-4d11-9baf-cd1d5a94f695)
-
-- To minizme screen: `CTRL+A+D`
-- To return screen `screen -r hemi`
+# log
+```
+sudo journalctl -u hemid -f -o cat
+```
+# stop miner
+```
+sudo systemctl stop hemid
+```
 
 # View your points
 * Currently, the tHEMI token payout serves as Hemi PoP mining points. You will get tHEMI tokens for each block you min with your Hemi Pop Node
