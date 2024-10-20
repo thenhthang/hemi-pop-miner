@@ -4,11 +4,9 @@
 > Hemi is a modular protocol for superior scaling, security, and interoperability, powered by Bitcoin and Ethereum.
  
 #
-
-* For non-Node participants, you can join  pilot program [here](https://points.absinthe.network/hemi/) : Use my code to Enter: `a8389da2`
 * You can run miner using web browser on windows here: https://pop-miner.hemi.xyz/
-* Chekc point: https://testnet.popstats.hemi.network/
-* https://hemistatus.com/
+* Check point: https://testnet.popstats.hemi.network/
+* Network status: https://hemistatus.com/
 
 ## Install Miner on Linux
 **1. Download Binaries**
