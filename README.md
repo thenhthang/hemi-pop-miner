@@ -7,16 +7,17 @@
 
 * For non-Node participants, you can join  pilot program [here](https://points.absinthe.network/hemi/) : Use my code to Enter: `a8389da2`
 * You can run miner using web browser on windows here: https://pop-miner.hemi.xyz/
+* Chekc point: https://testnet.popstats.hemi.network/
 
 ## Install Miner on Linux
 **1. Download Binaries**
 ```bash
-wget https://github.com/hemilabs/heminetwork/releases/download/v0.4.3/heminetwork_v0.4.3_linux_amd64.tar.gz
+wget https://github.com/hemilabs/heminetwork/releases/download/v0.4.5/heminetwork_v0.4.5_linux_amd64.tar.gz
 ```
 
 **2. Extract Binaries**
 ```bash
-tar -xvf heminetwork_v0.4.3_linux_amd64.tar.gz && rm heminetwork_v0.4.3_linux_amd64.tar.gz && cd heminetwork_v0.4.3_linux_amd64
+tar -xvf heminetwork_v0.4.5_linux_amd64.tar.gz && rm heminetwork_v0.4.5_linux_amd64.tar.gz && cd heminetwork_v0.4.5_linux_amd64
 ```
 
 ## Wallet
