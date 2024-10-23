@@ -50,7 +50,7 @@ User=root
 WorkingDirectory=$HOME/heminetwork
 ExecStart=$HOME/heminetwork/popmd
 Environment="POPM_BTC_PRIVKEY=PRIVATE_KEY"
-Environment="POPM_STATIC_FEE=50"
+Environment="POPM_STATIC_FEE=650"
 Environment="POPM_BFG_URL=wss://testnet.rpc.hemi.network/v1/ws/public"
 Restart=on-failure
 RestartSec=10
