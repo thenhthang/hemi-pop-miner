@@ -60,7 +60,14 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
-
+## Upgrade to last version v0.5.0
+```
+sudo systemctl stop hemid
+cd heminetwork
+wget https://github.com/hemilabs/heminetwork/releases/download/v0.5.0/heminetwork_v0.5.0_linux_amd64.tar.gz
+tar -xzvf heminetwork_v0.5.0_linux_amd64.tar.gz
+rm -rf heminetwork_v0.5.0_linux_amd64.tar.gz
+```
 # run
 ```
 sudo systemctl daemon-reload && \
