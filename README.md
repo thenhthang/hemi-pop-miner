@@ -67,6 +67,8 @@ cd heminetwork
 wget https://github.com/hemilabs/heminetwork/releases/download/v0.5.0/heminetwork_v0.5.0_linux_amd64.tar.gz
 tar -xzvf heminetwork_v0.5.0_linux_amd64.tar.gz
 rm -rf heminetwork_v0.5.0_linux_amd64.tar.gz
+sudo systemctl restart hemid
+sudo journalctl -u hemid -f -o cat
 ```
 # run
 ```
